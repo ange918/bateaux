@@ -1,0 +1,207 @@
+
+> proforma-africa@0.1.0 dev
+> next dev -H 0.0.0.0 -p 5000
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.15[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+[35m[1mAttention[22m[39m: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[36mhttps://nextjs.org/telemetry[39m
+
+ [32m[1m✓[22m[39m Ready in 1449ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 13.1s (9831 modules)
+ GET / [32m200[39m in 1565ms
+ GET / [32m200[39m in 28ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 746ms (4897 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 823ms
+ [32m[1m✓[22m[39m Compiled in 1496ms (9799 modules)
+ [31m[1m⨯[22m[39m ./src/components/landing/About.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'apparence'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/About.tsx[0m:16:1]
+ [2m16[0m │   {
+ [2m17[0m │     icon: PaintBrush,
+ [2m18[0m │     title: '8 palettes de couleurs',
+ [2m19[0m │     desc: 'Personnalisez l'apparence de chaque facture selon votre image.',
+    · [38;2;246;87;248m                           ─────────[0m
+ [2m20[0m │   },
+ [2m21[0m │   {
+ [2m22[0m │     icon: FilePdf,
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/About.tsx
+./src/app/page.tsx
+ [37m[1m○[22m[39m Compiling /_error ...
+ [31m[1m⨯[22m[39m ./src/components/landing/About.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'apparence'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/About.tsx[0m:16:1]
+ [2m16[0m │   {
+ [2m17[0m │     icon: PaintBrush,
+ [2m18[0m │     title: '8 palettes de couleurs',
+ [2m19[0m │     desc: 'Personnalisez l'apparence de chaque facture selon votre image.',
+    · [38;2;246;87;248m                           ─────────[0m
+ [2m20[0m │   },
+ [2m21[0m │   {
+ [2m22[0m │     icon: FilePdf,
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/About.tsx
+./src/app/page.tsx
+ GET / [31m500[39m in 2620ms
+ [31m[1m⨯[22m[39m ./src/components/landing/About.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'outil'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/About.tsx[0m:36:1]
+ [2m36[0m │   {
+ [2m37[0m │     icon: Lightning,
+ [2m38[0m │     title: 'Zéro inscription',
+ [2m39[0m │     desc: 'Aucun compte requis. Ouvrez l'outil et commencez immédiatement.',
+    · [38;2;246;87;248m                                         ─────[0m
+ [2m40[0m │   },
+ [2m41[0m │ ];
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/About.tsx
+./src/app/page.tsx
+ [31m[1m⨯[22m[39m ./src/components/landing/FAQ.tsx
+Error: 
+  [38;2;255;30;30m×[0m Expected ',', got 'outil'
+    ╭─[[38;2;92;157;255;1;4m/home/runner/workspace/src/components/landing/FAQ.tsx[0m:10:1]
+ [2m10[0m │   },
+ [2m11[0m │   {
+ [2m12[0m │     q: 'Dois-je créer un compte ?',
+ [2m13[0m │     r: 'Non. Aucune inscription nécessaire. Ouvrez l'outil, remplissez le formulaire et téléchargez.',
+    · [38;2;246;87;248m                                                      ─────[0m
+ [2m14[0m │   },
+ [2m15[0m │   {
+ [2m16[0m │     q: 'Mes données sont-elles sauvegardées ?',
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/landing/FAQ.tsx
+./src/app/page.tsx
+ [32m[1m✓[22m[39m Compiled /_error in 6.6s (12859 modules)
+ GET / [32m200[39m in 2742ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 1747ms (7917 modules)
+ GET / [32m200[39m in 152ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 9ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 5ms
+ [37m[1m○[22m[39m Compiling /formulaire ...
+ [32m[1m✓[22m[39m Compiled /formulaire in 5s (13135 modules)
+ GET /formulaire [32m200[39m in 5152ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 19ms
+ GET / [32m200[39m in 109ms
+ GET / [32m200[39m in 40ms
+ [32m[1m✓[22m[39m Compiled in 3.9s (13116 modules)
+ [32m[1m✓[22m[39m Compiled in 1869ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 474ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 500ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 600ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 481ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 539ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 463ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 501ms (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 2.2s (13102 modules)
+ GET / [32m200[39m in 142ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 1037ms (7995 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 1130ms
+ [32m[1m✓[22m[39m Compiled in 2.4s (7964 modules)
+ [32m[1m✓[22m[39m Compiled in 650ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 1535ms (13117 modules)
+ GET / [32m200[39m in 170ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 511ms (7996 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 598ms
+ GET / [32m200[39m in 115ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 5ms
+ [32m[1m✓[22m[39m Compiled in 1280ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 1235ms (13117 modules)
+ GET / [32m200[39m in 97ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 514ms (7996 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 591ms
+ [32m[1m✓[22m[39m Compiled in 3s (13103 modules)
+ GET /formulaire [32m200[39m in 172ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 543ms (7996 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 626ms
+ [32m[1m✓[22m[39m Compiled in 1456ms (13132 modules)
+ [32m[1m✓[22m[39m Compiled in 2.9s (13103 modules)
+ GET /formulaire [32m200[39m in 162ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 534ms (7996 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 609ms
+ [32m[1m✓[22m[39m Compiled in 4.4s (13116 modules)
+ [32m[1m✓[22m[39m Compiled in 1316ms (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 525ms (7966 modules)
+ GET / [32m200[39m in 111ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 530ms (7997 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 710ms
+ [32m[1m✓[22m[39m Compiled in 4.8s (13120 modules)
+ GET /formulaire [32m200[39m in 1560ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 569ms (7997 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 1249ms
+ GET / [32m200[39m in 105ms
+ GET / [32m200[39m in 56ms
+ GET / [32m200[39m in 141ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 19ms
+ [32m[1m✓[22m[39m Compiled in 2.1s (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 782ms (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 1300ms (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 835ms (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 539ms (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 0ms (7966 modules)
+ [32m[1m✓[22m[39m Compiled in 2.7s (13106 modules)
+ [32m[1m✓[22m[39m Compiled in 0ms (7966 modules)
+ GET / [32m200[39m in 1214ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 794ms (7997 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 873ms
+ [32m[1m✓[22m[39m Compiled in 1881ms (7966 modules)
+ GET / [32m200[39m in 118ms
+ [32m[1m✓[22m[39m Compiled /icon.svg in 490ms (7997 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 638ms
+ [32m[1m✓[22m[39m Compiled in 2.4s (13113 modules)
+ [32m[1m✓[22m[39m Compiled in 3.8s (13117 modules)
+ [32m[1m✓[22m[39m Compiled in 1487ms (13103 modules)
+ GET / [32m200[39m in 1084ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 505ms (7996 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 586ms
+ GET / [32m200[39m in 112ms
+ [32m[1m✓[22m[39m Compiled in 1252ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 489ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 507ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 764ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 496ms (7965 modules)
+ [32m[1m✓[22m[39m Compiled in 516ms (7965 modules)
+ GET / [32m200[39m in 134ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 822ms (7996 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 907ms

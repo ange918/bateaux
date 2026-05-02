@@ -1,0 +1,395 @@
+Tu travailles sur ProformaAfrica en Next.js 14 App Router TypeScript.
+L'outil de création de facture existe déjà sur /app (ou la page principale).
+Crée UNIQUEMENT la landing page publique à la racine / (src/app/page.tsx).
+Ne touche à aucun autre fichier existant.
+
+---
+
+## 📁 FICHIERS À CRÉER / MODIFIER
+
+- src/app/page.tsx                        ← remplacer par la landing
+- src/components/landing/NavBar.tsx       ← créer
+- src/components/landing/Hero.tsx         ← créer
+- src/components/landing/About.tsx        ← créer
+- src/components/landing/Comment.tsx      ← créer
+- src/components/landing/Demo.tsx         ← créer
+- src/components/landing/FAQ.tsx          ← créer
+- src/components/landing/CTA.tsx          ← créer
+- src/components/landing/Footer.tsx       ← créer
+
+---
+
+## 🎨 DESIGN SYSTEM
+
+Réutiliser exactement les CSS variables déjà définies :
+--bg, --card, --green, --green-light, --green-dark, --gold,
+--text, --text-muted, --border, --shadow
+
+Typographie : Unbounded + Plus Jakarta Sans (déjà chargées)
+Icônes : @phosphor-icons/react exclusivement
+
+Boutons "Commencer" :
+- Tous les boutons CTA principaux → href="/formulaire" (ou la route de l'outil)
+- fond var(--green), couleur blanc, Unbounded 14px
+- padding 14px 32px, border-radius 8px
+- hover : fond var(--green-dark), transform translateY(-2px)
+- transition 0.2s ease
+- Icône ArrowRight 16px à droite
+
+---
+
+## 🧭 NAVBAR — src/components/landing/NavBar.tsx
+
+- background rgba(247, 245, 240, 0.92), backdrop-filter blur(12px)
+- border-bottom 1px solid var(--border)
+- sticky top-0, z-index 50, height 64px
+- padding 0 clamp(24px, 6vw, 80px)
+- flex justify-between align-center
+
+Gauche — Logo :
+- PROFORMA Unbounded 700 20px var(--green)
+- AFRICA Unbounded 400 20px var(--gold)
+- Les 2 côte à côte sans espace
+
+Centre — Liens (desktop uniquement, hidden mobile) :
+- "Fonctionnalités" · "Comment ça marche" · "FAQ"
+- href="#fonctionnalites" · "#comment" · "#faq"
+- Plus Jakarta Sans 14px var(--text-muted)
+- hover var(--green), transition 0.15s
+- scroll-behavior smooth via globals.css : html { scroll-behavior: smooth }
+
+Droite :
+- Bouton "Commencer gratuitement →"
+  fond var(--green), couleur blanc, Unbounded 13px
+  padding 10px 22px, border-radius 8px
+  href="/formulaire" (adapter selon la vraie route de l'outil)
+
+---
+
+## 🦸 HERO — src/components/landing/Hero.tsx
+
+Section plein écran, background var(--bg), text-align center
+padding clamp(100px, 16vh, 160px) clamp(24px, 6vw, 80px) clamp(60px, 10vh, 100px)
+
+Badge haut :
+- "✦ Conçu pour l'Afrique francophone"
+- Plus Jakarta Sans 12px 500, fond var(--green-light), couleur var(--green)
+- padding 6px 18px, border-radius 100px, display inline-block
+- margin-bottom 28px
+
+Titre principal :
+- Unbounded 700, clamp(36px, 6vw, 72px), var(--text), line-height 1.05
+- Ligne 1 : "Créez vos factures"
+- Ligne 2 : span couleur var(--green) : "en 3 minutes."
+- Séparées par <br />
+
+Sous-titre :
+- Plus Jakarta Sans 18px var(--text-muted), max-width 580px, margin 20px auto 0
+- "Devis, factures et proformas professionnels pour les freelances et PME d'Afrique. Sans compte, sans abonnement."
+
+Ligne CTA (flex center gap 16px flex-wrap margin-top 44px) :
+- Bouton primaire : "Créer ma première facture →" (style défini plus haut)
+- Bouton secondaire : "Voir la démo ↓"
+  href="#demo", border 1px solid var(--border), fond blanc
+  couleur var(--text), Plus Jakarta Sans 14px 500
+  padding 14px 32px, border-radius 8px
+  hover background var(--bg), border-color var(--green), couleur var(--green)
+
+Stats row (flex center gap 48px flex-wrap margin-top 64px) :
+3 blocs stat :
+- Chiffre : Unbounded 700 clamp(28px, 4vw, 40px) var(--green)
+- Label : Plus Jakarta Sans 13px var(--text-muted) margin-top 4px
+
+Stats :
+- "3 min" / "Pour créer une facture"
+- "8 palettes" / "De design disponibles"
+- "100% gratuit" / "Sans compte requis"
+
+Séparateur décoratif bas :
+- div height 1px, background linear-gradient(90deg, transparent, var(--border), transparent)
+- margin-top clamp(60px, 10vh, 100px)
+
+---
+
+## ℹ️ ABOUT — src/components/landing/About.tsx
+
+id="fonctionnalites"
+padding clamp(60px, 10vh, 120px) clamp(24px, 6vw, 80px)
+background var(--card)
+
+En-tête centré :
+- Surtitre : "POURQUOI PROFORMAAFRICA ?"
+  Plus Jakarta Sans 11px uppercase letter-spacing 0.2em var(--green) margin-bottom 12px
+- Titre : Unbounded 700 clamp(28px, 4vw, 44px) var(--text) max-width 600px margin auto
+  "L'outil de facturation fait pour votre réalité."
+- Sous-titre : Plus Jakarta Sans 16px var(--text-muted) max-width 520px margin 16px auto 0
+  "Pas besoin de s'inscrire. Remplissez, personnalisez, téléchargez."
+
+Grid 3 colonnes (desktop) / 1 colonne (mobile), gap 24px, margin-top 56px :
+
+6 feature cards :
+
+Card style :
+- background var(--bg), border 1px solid var(--border), border-radius 12px
+- padding 28px, transition 0.2s
+- hover : border-color var(--green), box-shadow var(--shadow), transform translateY(-3px)
+
+Contenu :
+- Icône Phosphor 32px couleur var(--green), fond var(--green-light)
+  padding 10px, border-radius 10px, display inline-flex, margin-bottom 16px
+- Titre : Unbounded 600 15px var(--text) margin-bottom 8px
+- Description : Plus Jakarta Sans 14px var(--text-muted) line-height 1.6
+
+Features :
+1. FileText → "Devis & Proformas" — "Créez tous types de documents commerciaux en quelques clics."
+2. PaintBrush → "8 palettes de couleurs" — "Personnalisez l'apparence de chaque facture selon votre image."
+3. FilePdf → "Export PDF instantané" — "Téléchargez un PDF professionnel prêt à envoyer."
+4. Stamp → "Filigrane personnalisé" — "Ajoutez le nom de votre entreprise en arrière-plan pour plus de professionnalisme."
+5. CurrencyDollar → "Multi-devises" — "XOF, XAF, MAD, EUR, USD — la devise de votre choix."
+6. Lightning → "Zéro inscription" — "Aucun compte requis. Ouvrez l'outil et commencez immédiatement."
+
+---
+
+## 🔢 COMMENT ÇA MARCHE — src/components/landing/Comment.tsx
+
+id="comment"
+padding clamp(60px, 10vh, 120px) clamp(24px, 6vw, 80px)
+background var(--bg)
+
+En-tête centré (même structure que About) :
+- Surtitre : "SIMPLE COMME BONJOUR"
+- Titre : "3 étapes, c'est tout."
+
+Steps — layout flex column gap 0, max-width 700px, margin 56px auto 0 :
+
+Chaque step :
+- display flex, gap 32px, align-items flex-start
+- padding-bottom 48px, position relative
+
+Ligne verticale connectrice entre steps (sauf dernier) :
+- ::after pseudo-element
+- width 2px, background linear-gradient(var(--green), var(--border))
+- position absolute, left 23px, top 48px
+- height calc(100% - 24px)
+
+Numéro step (cercle 48x48) :
+- background var(--green), couleur blanc
+- Unbounded 700 18px, border-radius 50%
+- display flex align-items center justify-content center
+- flex-shrink 0, z-index 1, position relative
+
+Contenu droite :
+- Titre : Unbounded 600 18px var(--text) margin-bottom 8px
+- Description : Plus Jakarta Sans 15px var(--text-muted) line-height 1.6
+- Tag optionnel : petit badge var(--green-light) var(--green)
+
+3 étapes :
+1. "Renseignez vos informations"
+   "Nom de votre entreprise, logo, coordonnées client, services rendus et montants."
+   Tag : "2 minutes"
+
+2. "Personnalisez votre facture"
+   "Choisissez une palette de couleurs, activez le filigrane, sélectionnez la devise."
+   Tag : "30 secondes"
+
+3. "Téléchargez votre PDF"
+   "Cliquez sur le bouton de génération et recevez un PDF professionnel instantanément."
+   Tag : "Instantané"
+
+Bouton centré en bas :
+"Essayer maintenant →" (style bouton primaire)
+
+---
+
+## 🎬 DÉMO — src/components/landing/Demo.tsx
+
+id="demo"
+padding clamp(60px, 10vh, 120px) clamp(24px, 6vw, 80px)
+background var(--card)
+
+En-tête centré :
+- Surtitre : "APERÇU DE L'OUTIL"
+- Titre : "Voyez ProformaAfrica en action."
+
+Simulation d'écran (mockup browser) :
+- max-width 900px, margin 48px auto 0
+- Barre navigateur simulée :
+  background #1E1E1E, border-radius 12px 12px 0 0, padding 12px 16px
+  flex row align-center gap 8px
+  3 cercles décoratifs : 12px, rouge (#FF5F57) / jaune (#FFBD2E) / vert (#28CA41)
+  Barre URL simulée : fond #2D2D2D, border-radius 6px, padding 6px 16px, flex-1
+  Texte "proformaafrica.vercel.app" Plus Jakarta Sans 12px #888
+
+- Corps du mockup (fond blanc, border-radius 0 0 12px 12px, overflow hidden) :
+  box-shadow 0 24px 80px rgba(0,0,0,0.15)
+
+  Layout 2 colonnes simulé (pointer-events none, user-select none) :
+
+  Col gauche (fond var(--bg), padding 24px, border-right 1px solid var(--border)) :
+  - Titre "Votre entreprise" Unbounded 600 13px var(--text) margin-bottom 12px
+  - 3 faux inputs simulés :
+    div height 36px, background var(--card), border 1px solid var(--border)
+    border-radius 6px, margin-bottom 8px
+    Avec faux texte dedans Plus Jakarta Sans 12px var(--text-muted) padding 0 12px line-height 36px
+    Valeurs : "Digital Innovation" / "Cotonou, Bénin" / "contact@digital.bj"
+  - Titre "Services" margin-top 16px margin-bottom 8px
+  - 2 fausses lignes service :
+    flex row gap 8px
+    div description (flex-3) + div quantité (40px) + div prix (80px)
+    même style inputs
+    Valeurs : "Création site web" / "1" / "150 000"
+  - Bande palette (flex row gap 6px margin-top 16px) :
+    8 cercles 20px chacun avec les couleurs primaires des 8 palettes
+
+  Col droite (fond blanc, padding 24px) :
+  - Simuler l'aperçu PDF :
+    En-tête : carré vert 32px initiales "DI" + "Digital Innovation" Unbounded 600 13px
+    + "FACTURE" Unbounded 700 20px var(--green) text-align right
+    Séparateur 1px var(--border) margin 12px 0
+    "FACTURÉ À" Plus Jakarta Sans 9px uppercase var(--text-muted)
+    "Koné & Associés" Unbounded 600 13px margin-top 4px
+    Tableau mini avec 2 lignes fausses
+    Total : "177 000 XOF" Unbounded 700 16px var(--green) text-align right margin-top 12px
+    Barre verte bas : height 3px background var(--green) border-radius 2px margin-top 16px
+
+Bouton sous le mockup (centré, margin-top 40px) :
+"Accéder à l'outil →" style bouton primaire
+
+---
+
+## ❓ FAQ — src/components/landing/FAQ.tsx
+
+id="faq"
+padding clamp(60px, 10vh, 120px) clamp(24px, 6vw, 80px)
+background var(--bg)
+'use client' pour accordion
+
+En-tête centré :
+- Surtitre : "FAQ"
+- Titre : "Questions fréquentes."
+
+Accordion (max-width 680px, margin 48px auto 0) :
+useState openIndex: number | null = null
+
+8 questions :
+1. "Est-ce vraiment gratuit ?"
+   "Oui, ProformaAfrica est 100% gratuit. Aucun abonnement, aucune carte bancaire requise."
+
+2. "Dois-je créer un compte ?"
+   "Non. Aucune inscription nécessaire. Ouvrez l'outil, remplissez le formulaire et téléchargez."
+
+3. "Mes données sont-elles sauvegardées ?"
+   "Les données restent dans votre navigateur le temps de la session. Rien n'est envoyé sur un serveur."
+
+4. "Puis-je ajouter mon logo ?"
+   "Oui, vous pouvez uploader votre logo (PNG, JPG) et il apparaîtra sur votre PDF."
+
+5. "Quelles devises sont supportées ?"
+   "XOF, XAF, MAD (Dirham), EUR et USD. D'autres devises seront ajoutées prochainement."
+
+6. "Puis-je modifier une facture après l'avoir téléchargée ?"
+   "Oui, tant que vous n'avez pas rechargé la page. Modifiez le formulaire et retéléchargez le PDF."
+
+7. "Le PDF est-il professionnel ?"
+   "Oui. Le PDF généré est de qualité professionnelle avec votre branding, vos couleurs et vos informations."
+
+8. "Fonctionne-t-il sur mobile ?"
+   "Oui, ProformaAfrica est responsive et fonctionne sur tous les appareils."
+
+Style chaque item accordion :
+- border-bottom 1px solid var(--border)
+- padding 20px 0
+
+Bouton question (flex justify-between align-center, width 100%, cursor pointer) :
+- Texte : Plus Jakarta Sans 600 15px var(--text)
+- Icône CaretDown 18px var(--text-muted), rotate 0 → 180deg si ouvert, transition 0.2s
+
+Réponse (si ouvert) :
+- Plus Jakarta Sans 14px var(--text-muted) line-height 1.7
+- padding-top 12px
+- animation fadeIn 0.2s ease
+
+---
+
+## 🚀 CTA FINAL — src/components/landing/CTA.tsx
+
+padding clamp(80px, 14vh, 140px) clamp(24px, 6vw, 80px)
+background var(--green)
+text-align center, position relative, overflow hidden
+
+Cercles décoratifs (position absolute, pointer-events none) :
+- Cercle 1 : top -80px, right -80px, width 300px, height 300px
+  border-radius 50%, border 1px solid rgba(255,255,255,0.1)
+- Cercle 2 : bottom -100px, left -60px, width 250px, height 250px
+  border-radius 50%, border 1px solid rgba(255,255,255,0.08)
+
+Contenu (position relative, z-index 1) :
+- Surtitre : "PRÊT À COMMENCER ?"
+  Plus Jakarta Sans 11px uppercase letter-spacing 0.2em rgba(255,255,255,0.6) margin-bottom 16px
+- Titre : Unbounded 700 clamp(28px, 5vw, 52px) blanc line-height 1.1
+  "Créez votre première facture maintenant."
+- Sous-titre : Plus Jakarta Sans 16px rgba(255,255,255,0.7) max-width 480px margin 20px auto 0
+  "Gratuit, sans compte, en 3 minutes."
+- Bouton : "Commencer gratuitement →"
+  fond blanc, couleur var(--green), Unbounded 700 15px
+  padding 16px 40px, border-radius 8px, margin-top 40px
+  hover : fond var(--green-light), transform translateY(-2px)
+  transition 0.2s, box-shadow 0 8px 24px rgba(0,0,0,0.15)
+  href="/formulaire"
+
+---
+
+## 🦶 FOOTER — src/components/landing/Footer.tsx
+
+background var(--text), padding 32px clamp(24px, 6vw, 80px)
+flex justify-between align-center flex-wrap gap 16px
+
+Gauche :
+- Logo PROFORMAAFRICA (même style NavBar mais blanc/gold)
+- Plus Jakarta Sans 13px rgba(255,255,255,0.4) margin-top 6px :
+  "L'outil de facturation de l'Afrique francophone."
+
+Droite :
+- "© 2024 ProformaAfrica — Fait par "
+  Plus Jakarta Sans 13px rgba(255,255,255,0.4)
+- Lien "Ange Akonde" :
+  href="https://angeakonde-dev.vercel.app"
+  target="_blank", rel="noopener noreferrer"
+  couleur var(--gold), Unbounded 600 13px
+  hover : text-decoration underline
+  transition 0.15s
+
+---
+
+## 📄 PAGE PRINCIPALE — src/app/page.tsx
+
+Importer et afficher dans l'ordre :
+1. <NavBar />
+2. <Hero />
+3. <About />
+4. <Comment />
+5. <Demo />
+6. <FAQ />
+7. <CTA />
+8. <Footer />
+
+Tous dans un <main> sans padding.
+
+Ajouter dans globals.css :
+html { scroll-behavior: smooth; }
+
+---
+
+## ✅ RÈGLES STRICTES
+
+- 'use client' uniquement sur FAQ (accordion)
+- Toutes les autres sections → Server Components
+- Tous les boutons "Commencer" → href="/formulaire"
+  (adapter selon la vraie route de l'outil existant)
+- Lien "Ange Akonde" → https://angeakonde-dev.vercel.app target="_blank"
+- Zéro emoji dans l'UI
+- Phosphor Icons exclusivement
+- CSS variables exclusivement, zéro couleur hardcodée
+- Responsive mobile first sur toutes les sections
+- npm run dev sans erreur TypeScript
+- Ne pas modifier les fichiers existants de l'outil

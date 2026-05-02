@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "IhhufUo9WCaqbKBIOLxax"
+uri = "file://public/hero-bg.png"
+type = "image"
+title = "hero background africa"

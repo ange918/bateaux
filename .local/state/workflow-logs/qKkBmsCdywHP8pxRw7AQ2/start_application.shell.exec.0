@@ -1,0 +1,33 @@
+
+> proforma-africa@0.1.0 dev
+> next dev -H 0.0.0.0 -p 5000
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.15[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 2.8s
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 12.6s (9699 modules)
+ GET / [32m200[39m in 279ms
+ GET / [32m200[39m in 4173ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 1414ms (4829 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 1532ms
+ GET / [32m200[39m in 104ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 6ms
+ [32m[1m✓[22m[39m Compiled in 1639ms (9730 modules)
+ [32m[1m✓[22m[39m Compiled in 2.8s (9730 modules)
+ [32m[1m✓[22m[39m Compiled in 2s (9791 modules)
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ [33m[1m⚠[22m[39m Fast Refresh had to perform a full reload due to a runtime error.
+ GET / [32m200[39m in 218ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 524ms (4893 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 1135ms
+ GET / [32m200[39m in 1217ms
+ GET / [32m200[39m in 49ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 6ms
+ [32m[1m✓[22m[39m Compiled in 5.4s (9822 modules)
+ [32m[1m✓[22m[39m Compiled in 2.5s (9836 modules)

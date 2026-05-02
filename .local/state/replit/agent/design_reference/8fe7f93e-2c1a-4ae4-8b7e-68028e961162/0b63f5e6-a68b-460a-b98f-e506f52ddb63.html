@@ -1,0 +1,735 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxYacht - Location de Yachts de Luxe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'playfair': ['Playfair Display', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'ocean': {
+                            50: '#f0f9ff',
+                            500: '#0EA5E9',
+                            700: '#0369A1',
+                            900: '#0C4A6E',
+                        },
+                        'luxury-gold': '#F59E0B',
+                    }
+                }
+            }
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/outline/index.css" rel="stylesheet">
+    <style>
+        .wave-animation {
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(14,165,233,0.2) 25%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(14,165,233,0.2) 75%, 
+                rgba(255,255,255,0.1) 100%);
+            background-size: 200% 200%;
+            animation: wave-move 8s ease-in-out infinite;
+        }
+        
+        @keyframes wave-move {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .yacht-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slider-image {
+            min-width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Fixed Background -->
+    <!-- A luxury yacht sailing on crystal clear turquoise waters with mountains in background -->
+    <div class="fixed inset-0 z-0 parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080');">
+        <div class="absolute inset-0 wave-animation"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+    </div>
+
+    <!-- Fixed Header -->
+    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-white font-playfair text-2xl font-bold">
+                LuxYacht
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-white hover:text-luxury-gold transition-colors">Accueil</a>
+                <a href="#yachts" class="text-white hover:text-luxury-gold transition-colors">Nos Yachts</a>
+                <a href="#apropos" class="text-white hover:text-luxury-gold transition-colors">À propos</a>
+                <a href="#contact" class="text-white hover:text-luxury-gold transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="relative z-10 min-h-screen flex items-center justify-center text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="font-playfair text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">
+                Évasion de Luxe
+            </h1>
+            <p class="text-xl md:text-2xl text-white mb-8 drop-shadow-md">
+                Découvrez l'océan comme jamais auparavant à bord de nos yachts d'exception
+            </p>
+            <button class="bg-luxury-gold hover:bg-yellow-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 btn-hover">
+                Réserver Maintenant
+            </button>
+        </div>
+    </section>
+
+    <!-- Nos Yachts Section -->
+    <section id="yachts" class="relative z-10 py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+                    Notre Flotte d'Exception
+                </h2>
+                <p class="text-xl text-white drop-shadow-md">
+                    Choisissez parmi nos yachts de luxe soigneusement sélectionnés
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Yacht 1 -->
+                <div class="yacht-card bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                    <!-- Luxury motor yacht on calm blue waters with white hull and elegant design -->
+                    <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Yacht Serenity" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-white mb-2">Serenity</h3>
+                        <p class="text-white mb-4">À partir de <span class="text-luxury-gold font-bold">2 500€</span>/jour</p>
+                        <div class="flex space-x-3">
+                            <button onclick="openModal('serenity')" class="bg-ocean-700 hover:bg-ocean-900 text-white px-4 py-2 rounded-lg transition-colors">
+                                En savoir plus
+                            </button>
+                            <button class="bg-luxury-gold hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                Réserver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yacht 2 -->
+                <div class="yacht-card bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                    <!-- Modern sailing yacht with white sails against blue sky and ocean -->
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Yacht Odyssey" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-white mb-2">Odyssey</h3>
+                        <p class="text-white mb-4">À partir de <span class="text-luxury-gold font-bold">3 800€</span>/jour</p>
+                        <div class="flex space-x-3">
+                            <button onclick="openModal('odyssey')" class="bg-ocean-700 hover:bg-ocean-900 text-white px-4 py-2 rounded-lg transition-colors">
+                                En savoir plus
+                            </button>
+                            <button class="bg-luxury-gold hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                Réserver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yacht 3 -->
+                <div class="yacht-card bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl">
+                    <!-- Mega yacht with multiple decks and luxury amenities on azure waters -->
+                    <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Yacht Prestige" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-playfair text-2xl font-bold text-white mb-2">Prestige</h3>
+                        <p class="text-white mb-4">À partir de <span class="text-luxury-gold font-bold">5 200€</span>/jour</p>
+                        <div class="flex space-x-3">
+                            <button onclick="openModal('prestige')" class="bg-ocean-700 hover:bg-ocean-900 text-white px-4 py-2 rounded-lg transition-colors">
+                                En savoir plus
+                            </button>
+                            <button class="bg-luxury-gold hover:bg-yellow-600 text-white px-4 py-2 rounded-lg transition-colors">
+                                Réserver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="apropos" class="relative z-10 py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+                        L'Excellence Maritime
+                    </h2>
+                    <p class="text-lg text-white mb-6 drop-shadow-md">
+                        Depuis plus de 15 ans, LuxYacht propose des expériences nautiques d'exception. 
+                        Notre flotte soigneusement sélectionnée et notre équipe d'experts vous garantissent 
+                        des moments inoubliables sur les plus belles eaux du monde.
+                    </p>
+                    <p class="text-lg text-white drop-shadow-md">
+                        Que ce soit pour une escapade romantique, un événement d'entreprise ou des vacances 
+                        en famille, nous créons des souvenirs qui durent toute une vie.
+                    </p>
+                </div>
+                <div>
+                    <!-- Luxury yacht interior with elegant furnishings and panoramic ocean views -->
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Intérieur de yacht de luxe" class="rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative z-10 py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+                    Contactez-nous
+                </h2>
+                <p class="text-xl text-white mb-8 drop-shadow-md">
+                    Prêt à vivre l'expérience LuxYacht ? Contactez-nous dès maintenant.
+                </p>
+
+                <form id="contact-form" class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <input type="text" placeholder="Nom" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-luxury-gold focus:outline-none">
+                        <input type="email" placeholder="Email" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-luxury-gold focus:outline-none">
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <input type="date" required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm text-white border border-white border-opacity-30 focus:border-luxury-gold focus:outline-none">
+                        <select required class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm text-white border border-white border-opacity-30 focus:border-luxury-gold focus:outline-none">
+                            <option value="">Choisir un yacht</option>
+                            <option value="serenity">Serenity - 2 500€/jour</option>
+                            <option value="odyssey">Odyssey - 3 800€/jour</option>
+                            <option value="prestige">Prestige - 5 200€/jour</option>
+                        </select>
+                    </div>
+                    <textarea placeholder="Message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-20 backdrop-blur-sm text-white placeholder-gray-300 border border-white border-opacity-30 focus:border-luxury-gold focus:outline-none mb-6"></textarea>
+                    <button type="submit" class="w-full bg-luxury-gold hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold transition-all duration-300 btn-hover">
+                        Envoyer la demande
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-black bg-opacity-50 backdrop-blur-sm py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-playfair text-2xl font-bold text-white mb-4">LuxYacht</h3>
+                    <p class="text-gray-300">L'excellence maritime depuis 2008</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <p class="text-gray-300">+33 1 23 45 67 89</p>
+                    <p class="text-gray-300">contact@luxyacht.fr</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-luxury-gold transition-colors">Facebook</a>
+                        <a href="#" class="text-gray-300 hover:text-luxury-gold transition-colors">Instagram</a>
+                        <a href="#" class="text-gray-300 hover:text-luxury-gold transition-colors">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 LuxYacht. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Yacht Details Modals -->
+    
+    <!-- Serenity Modal -->
+    <div id="serenity-modal" class="modal">
+        <div class="bg-white rounded-2xl max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-playfair text-3xl font-bold text-gray-900">Serenity</h2>
+                    <button onclick="closeModal('serenity')" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Image Slider -->
+                <div class="slider-container mb-6">
+                    <div class="slider-track" id="serenity-slider">
+                        <!-- Luxury yacht exterior deck with comfortable seating and ocean views -->
+                        <img src="https://images.unsplash.com/photo-1566024287286-457247b70310?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Serenity exterior" class="slider-image">
+                        <!-- Yacht interior salon with modern furniture and large windows -->
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Serenity interior salon" class="slider-image">
+                        <!-- Yacht master bedroom with elegant bedding and ocean view -->
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Serenity master bedroom" class="slider-image">
+                        <!-- Yacht kitchen with modern appliances and marble countertops -->
+                        <img src="https://pixabay.com/get/g3f2771766472bb720d9dbb873c83a7abe744288d7860e036820850c71f19c807f2cc8ead48c5a92120ad04dca320c1ecaa396b1d831d6bd8fb02313239c20690_1280.jpg" alt="Serenity kitchen" class="slider-image">
+                    </div>
+                    <div class="flex justify-center mt-4 space-x-2">
+                        <button onclick="changeSlide('serenity', 0)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="0"></button>
+                        <button onclick="changeSlide('serenity', 1)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="1"></button>
+                        <button onclick="changeSlide('serenity', 2)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="2"></button>
+                        <button onclick="changeSlide('serenity', 3)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="3"></button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Yacht Details -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Caractéristiques</h3>
+                        <ul class="space-y-2 text-gray-600 mb-6">
+                            <li><strong>Longueur:</strong> 25 mètres</li>
+                            <li><strong>Capacité:</strong> 12 personnes</li>
+                            <li><strong>Cabines:</strong> 4 cabines avec salle de bain</li>
+                            <li><strong>Équipage:</strong> 3 membres</li>
+                            <li><strong>Vitesse:</strong> 28 nœuds</li>
+                        </ul>
+                        <p class="text-gray-700">
+                            Le Serenity offre une expérience de navigation exceptionnelle avec ses espaces 
+                            élégants et ses équipements modernes. Parfait pour des escapades familiales 
+                            ou des événements privés.
+                        </p>
+                    </div>
+
+                    <!-- Booking Form -->
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Réservation</h3>
+                        <form id="serenity-booking" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" placeholder="Nom" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                                <input type="text" placeholder="Prénom" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            </div>
+                            <input type="email" placeholder="Email" required class="w-full px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            <input type="tel" placeholder="Numéro de téléphone" required class="w-full px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            <div class="grid grid-cols-2 gap-4">
+                                <select required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                                    <option value="">Nombre de personnes</option>
+                                    <option value="2">2 personnes</option>
+                                    <option value="4">4 personnes</option>
+                                    <option value="6">6 personnes</option>
+                                    <option value="8">8 personnes</option>
+                                    <option value="10">10 personnes</option>
+                                    <option value="12">12 personnes</option>
+                                </select>
+                                <input type="date" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-lg font-semibold">Prix total: <span id="serenity-price" class="text-luxury-gold">2 500€</span></p>
+                                <p class="text-sm text-gray-600">Prix par jour</p>
+                            </div>
+                            <button type="submit" class="w-full bg-ocean-700 hover:bg-ocean-900 text-white py-3 rounded-lg font-semibold transition-colors">
+                                Confirmer la réservation
+                            </button>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                                    PayPal
+                                </button>
+                                <button type="button" class="bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition-colors">
+                                    Bitcoin
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar modals for Odyssey and Prestige would follow the same structure -->
+    <!-- Odyssey Modal -->
+    <div id="odyssey-modal" class="modal">
+        <div class="bg-white rounded-2xl max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-playfair text-3xl font-bold text-gray-900">Odyssey</h2>
+                    <button onclick="closeModal('odyssey')" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="slider-container mb-6">
+                    <div class="slider-track" id="odyssey-slider">
+                        <!-- Modern sailing yacht with white sails in full wind -->
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Odyssey sailing" class="slider-image">
+                        <!-- Sailing yacht cockpit with steering wheel and navigation equipment -->
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Odyssey cockpit" class="slider-image">
+                        <!-- Yacht interior cabin with nautical design and comfortable seating -->
+                        <img src="https://pixabay.com/get/g09c2d6b5294145b18c9f86c6fa8bfaff3d61b2236bf86279b35bbe9607274a27300f027c057f943f0e157653b14397f9ad796ea2666bb5feecf0de34c5a5d0e3_1280.jpg" alt="Odyssey interior" class="slider-image">
+                    </div>
+                    <div class="flex justify-center mt-4 space-x-2">
+                        <button onclick="changeSlide('odyssey', 0)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="0"></button>
+                        <button onclick="changeSlide('odyssey', 1)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="1"></button>
+                        <button onclick="changeSlide('odyssey', 2)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="2"></button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Caractéristiques</h3>
+                        <ul class="space-y-2 text-gray-600 mb-6">
+                            <li><strong>Longueur:</strong> 32 mètres</li>
+                            <li><strong>Capacité:</strong> 16 personnes</li>
+                            <li><strong>Cabines:</strong> 6 cabines luxueuses</li>
+                            <li><strong>Équipage:</strong> 4 membres</li>
+                            <li><strong>Type:</strong> Voilier de luxe</li>
+                        </ul>
+                        <p class="text-gray-700">
+                            L'Odyssey combine la tradition de la voile avec le confort moderne. 
+                            Une expérience authentique pour les amateurs de navigation.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Réservation</h3>
+                        <form id="odyssey-booking" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" placeholder="Nom" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                                <input type="text" placeholder="Prénom" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            </div>
+                            <input type="email" placeholder="Email" required class="w-full px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            <input type="tel" placeholder="Numéro de téléphone" required class="w-full px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            <div class="grid grid-cols-2 gap-4">
+                                <select required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                                    <option value="">Nombre de personnes</option>
+                                    <option value="2">2 personnes</option>
+                                    <option value="4">4 personnes</option>
+                                    <option value="8">8 personnes</option>
+                                    <option value="12">12 personnes</option>
+                                    <option value="16">16 personnes</option>
+                                </select>
+                                <input type="date" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-lg font-semibold">Prix total: <span id="odyssey-price" class="text-luxury-gold">3 800€</span></p>
+                                <p class="text-sm text-gray-600">Prix par jour</p>
+                            </div>
+                            <button type="submit" class="w-full bg-ocean-700 hover:bg-ocean-900 text-white py-3 rounded-lg font-semibold transition-colors">
+                                Confirmer la réservation
+                            </button>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                                    PayPal
+                                </button>
+                                <button type="button" class="bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition-colors">
+                                    Bitcoin
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prestige Modal -->
+    <div id="prestige-modal" class="modal">
+        <div class="bg-white rounded-2xl max-w-4xl mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="font-playfair text-3xl font-bold text-gray-900">Prestige</h2>
+                    <button onclick="closeModal('prestige')" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="slider-container mb-6">
+                    <div class="slider-track" id="prestige-slider">
+                        <!-- Mega yacht with multiple decks and luxury design -->
+                        <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Prestige exterior" class="slider-image">
+                        <!-- Luxury yacht sundeck with jacuzzi and lounging area -->
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Prestige sundeck" class="slider-image">
+                        <!-- Elegant yacht dining room with crystal chandelier -->
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Prestige dining" class="slider-image">
+                        <!-- Yacht spa and wellness area with modern amenities -->
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Prestige spa" class="slider-image">
+                    </div>
+                    <div class="flex justify-center mt-4 space-x-2">
+                        <button onclick="changeSlide('prestige', 0)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="0"></button>
+                        <button onclick="changeSlide('prestige', 1)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="1"></button>
+                        <button onclick="changeSlide('prestige', 2)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="2"></button>
+                        <button onclick="changeSlide('prestige', 3)" class="w-3 h-3 rounded-full bg-gray-300 slider-dot" data-slide="3"></button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Caractéristiques</h3>
+                        <ul class="space-y-2 text-gray-600 mb-6">
+                            <li><strong>Longueur:</strong> 45 mètres</li>
+                            <li><strong>Capacité:</strong> 24 personnes</li>
+                            <li><strong>Cabines:</strong> 8 suites de luxe</li>
+                            <li><strong>Équipage:</strong> 8 membres</li>
+                            <li><strong>Équipements:</strong> Spa, jacuzzi, hélipad</li>
+                        </ul>
+                        <p class="text-gray-700">
+                            Le Prestige représente l'summum du luxe maritime avec ses équipements 
+                            exceptionnels et son service personnalisé.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Réservation</h3>
+                        <form id="prestige-booking" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" placeholder="Nom" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                                <input type="text" placeholder="Prénom" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            </div>
+                            <input type="email" placeholder="Email" required class="w-full px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            <input type="tel" placeholder="Numéro de téléphone" required class="w-full px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            <div class="grid grid-cols-2 gap-4">
+                                <select required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                                    <option value="">Nombre de personnes</option>
+                                    <option value="2">2 personnes</option>
+                                    <option value="6">6 personnes</option>
+                                    <option value="12">12 personnes</option>
+                                    <option value="18">18 personnes</option>
+                                    <option value="24">24 personnes</option>
+                                </select>
+                                <input type="date" required class="px-3 py-2 border rounded-lg focus:border-ocean-500 focus:outline-none">
+                            </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-lg font-semibold">Prix total: <span id="prestige-price" class="text-luxury-gold">5 200€</span></p>
+                                <p class="text-sm text-gray-600">Prix par jour</p>
+                            </div>
+                            <button type="submit" class="w-full bg-ocean-700 hover:bg-ocean-900 text-white py-3 rounded-lg font-semibold transition-colors">
+                                Confirmer la réservation
+                            </button>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button type="button" class="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                                    PayPal
+                                </button>
+                                <button type="button" class="bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition-colors">
+                                    Bitcoin
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // IIFE to encapsulate all JavaScript functionality
+        (function() {
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.backgroundColor = 'transparent';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Modal functions
+            window.openModal = function(yachtName) {
+                const modal = document.getElementById(yachtName + '-modal');
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    // Initialize slider to first image
+                    changeSlide(yachtName, 0);
+                }
+            };
+
+            window.closeModal = function(yachtName) {
+                const modal = document.getElementById(yachtName + '-modal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            };
+
+            // Close modal when clicking outside
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+
+            // Slider functionality
+            const sliderStates = {
+                serenity: 0,
+                odyssey: 0,
+                prestige: 0
+            };
+
+            window.changeSlide = function(yachtName, slideIndex) {
+                const slider = document.getElementById(yachtName + '-slider');
+                const dots = document.querySelectorAll(`#${yachtName}-modal .slider-dot`);
+                
+                if (slider && dots.length > 0) {
+                    sliderStates[yachtName] = slideIndex;
+                    slider.style.transform = `translateX(-${slideIndex * 100}%)`;
+                    
+                    // Update dots
+                    dots.forEach((dot, index) => {
+                        if (index === slideIndex) {
+                            dot.classList.remove('bg-gray-300');
+                            dot.classList.add('bg-luxury-gold');
+                        } else {
+                            dot.classList.remove('bg-luxury-gold');
+                            dot.classList.add('bg-gray-300');
+                        }
+                    });
+                }
+            };
+
+            // Form handling
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement backend integration for contact form
+                alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
+                this.reset();
+            });
+
+            // Booking form handlers
+            ['serenity', 'odyssey', 'prestige'].forEach(yachtName => {
+                const form = document.getElementById(yachtName + '-booking');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        // TODO: Implement backend integration for booking
+                        alert(`Réservation confirmée pour le yacht ${yachtName.charAt(0).toUpperCase() + yachtName.slice(1)} ! Un email de confirmation vous sera envoyé.`);
+                        closeModal(yachtName);
+                        this.reset();
+                    });
+                }
+            });
+
+            // Price calculation for booking forms
+            const yachtPrices = {
+                serenity: 2500,
+                odyssey: 3800,
+                prestige: 5200
+            };
+
+            // Auto-calculate prices based on number of people (could be enhanced with duration)
+            ['serenity', 'odyssey', 'prestige'].forEach(yachtName => {
+                const form = document.getElementById(yachtName + '-booking');
+                if (form) {
+                    const peopleSelect = form.querySelector('select');
+                    const priceElement = document.getElementById(yachtName + '-price');
+                    
+                    if (peopleSelect && priceElement) {
+                        peopleSelect.addEventListener('change', function() {
+                            const people = parseInt(this.value) || 0;
+                            let basePrice = yachtPrices[yachtName];
+                            
+                            // Add surcharge for more people (example pricing logic)
+                            if (people > 8) {
+                                basePrice += (people - 8) * 200;
+                            }
+                            
+                            priceElement.textContent = basePrice.toLocaleString('fr-FR') + '€';
+                        });
+                    }
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    // TODO: Implement mobile menu toggle
+                    alert('Menu mobile - À implémenter selon les besoins');
+                });
+            }
+
+            // Initialize first slide dots
+            document.addEventListener('DOMContentLoaded', function() {
+                ['serenity', 'odyssey', 'prestige'].forEach(yachtName => {
+                    const firstDot = document.querySelector(`#${yachtName}-modal .slider-dot[data-slide="0"]`);
+                    if (firstDot) {
+                        firstDot.classList.remove('bg-gray-300');
+                        firstDot.classList.add('bg-luxury-gold');
+                    }
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>

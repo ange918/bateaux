@@ -1,0 +1,49 @@
+
+> proforma-africa@0.1.0 dev
+> next dev -H 0.0.0.0 -p 5000
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.15[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1894ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 27.4s (9825 modules)
+ [37m[1m○[22m[39m Compiling /_not-found ...
+ [32m[1m✓[22m[39m Compiled /_not-found in 10.9s (9796 modules)
+ [31m[1m⨯[22m[39m Error: Cannot find module '/home/runner/workspace/.next/server/middleware-manifest.json'
+Require stack:
+- /home/runner/workspace/node_modules/next/dist/server/next-server.js
+- /home/runner/workspace/node_modules/next/dist/server/dev/next-dev-server.js
+- /home/runner/workspace/node_modules/next/dist/server/next.js
+- /home/runner/workspace/node_modules/next/dist/server/lib/start-server.js
+[90m    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)[39m
+    at [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/require-hook.js:55:36
+[90m    at Module._load (node:internal/modules/cjs/loader:1038:27)[39m
+[90m    at Module.require (node:internal/modules/cjs/loader:1289:19)[39m
+    at mod.require [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/require-hook.js:65:28[90m)[39m
+[90m    at require (node:internal/modules/helpers:182:18)[39m
+    at DevServer.getMiddlewareManifest [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/next-server.js:932:26[90m)[39m
+    at DevServer.getEdgeFunctionsPages [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/next-server.js:948:31[90m)[39m
+    at DevServer.renderErrorToResponseImpl [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/next-server.js:907:22[90m)[39m
+    at async DevServer.pipeImpl [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/base-server.js:921:25[90m)[39m
+    at async NextNodeServer.handleCatchallRenderRequest [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/next-server.js:231:21[90m)[39m
+    at async DevServer.handleRequestImpl [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/base-server.js:817:17[90m)[39m
+    at async [90m/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/dev/next-dev-server.js:339:20
+    at async Span.traceAsyncFn [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/trace/trace.js:154:20[90m)[39m
+    at async DevServer.handleRequest [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/dev/next-dev-server.js:336:24[90m)[39m
+    at async invokeRender [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/router-server.js:173:21[90m)[39m
+    at async handleRequest [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/router-server.js:350:24[90m)[39m
+    at async requestHandlerImpl [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/router-server.js:374:13[90m)[39m
+    at async Server.requestListener [90m(/home/runner/workspace/[39mnode_modules/[4mnext[24m/dist/server/lib/start-server.js:141:13[90m)[39m {
+  code: [32m'MODULE_NOT_FOUND'[39m,
+  requireStack: [
+    [32m'/home/runner/workspace/node_modules/next/dist/server/next-server.js'[39m,
+    [32m'/home/runner/workspace/node_modules/next/dist/server/dev/next-dev-server.js'[39m,
+    [32m'/home/runner/workspace/node_modules/next/dist/server/next.js'[39m,
+    [32m'/home/runner/workspace/node_modules/next/dist/server/lib/start-server.js'[39m
+  ]
+}
+ [37m[1m○[22m[39m Compiling /_error ...
+ [32m[1m✓[22m[39m Compiled /_error in 4.4s (10021 modules)

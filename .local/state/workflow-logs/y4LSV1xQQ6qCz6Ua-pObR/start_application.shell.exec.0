@@ -1,0 +1,20 @@
+
+> proforma-africa@0.1.0 dev
+> next dev -H 0.0.0.0 -p 5000
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.15[39m[22m
+  - Local:        http://localhost:5000
+  - Network:      http://0.0.0.0:5000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 1729ms
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 14.6s (9829 modules)
+ [32m[1m✓[22m[39m Compiled in 3s (9799 modules)
+ GET / [32m200[39m in 165ms
+ GET / [32m200[39m in 34ms
+ [37m[1m○[22m[39m Compiling /icon.svg ...
+ [32m[1m✓[22m[39m Compiled /icon.svg in 539ms (4897 modules)
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 677ms
+ GET /?tab=facture [32m200[39m in 107ms
+ GET /icon.svg?6767bcdc1a1def3d [32m200[39m in 6ms
